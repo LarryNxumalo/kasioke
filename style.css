@@ -218,6 +218,7 @@ body .logo p {
 #bar{
   position:relative;
   display: flex;
+  justify-content: space-evenly;
   text-align: center;
   width:70%;
   padding-top: 45px;
@@ -650,7 +651,7 @@ body .logo p {
       border: 2px solid red;
       border-radius: 10px;
       width: 90%;
-      height: 75%;
+      height: 65%;
       color: var(--lyrics-color);
       text-align: center;
       overflow-Y: scroll;
@@ -697,12 +698,12 @@ body .logo p {
   }
 
   .left {
-    height: 25%;
+    height: 15%;
   }
 
   .left:hover #player {
     background: rgba(255, 255, 255, .1);
-    transform:  translateY(-60px) scale(.85) translateX(20%);
+    transform:  scaleY(1.1) scaleX(1.1) translateY(-40px);
   }
   #bar{
     position:relative;
