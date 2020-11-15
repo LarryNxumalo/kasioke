@@ -659,7 +659,7 @@ body .logo p {
       font-size: 2vh;
       background: rgba(255, 255, 255, .1);
       backdrop-filter: blur(46px);
-      margin-top: 50px;
+      margin-top: -279px;
   }
 
   #music-player .left img {
