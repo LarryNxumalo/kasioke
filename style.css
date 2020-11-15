@@ -164,19 +164,21 @@ body .logo p {
   margin:0;
   /* padding: 20vh 0; */
   transition: ease 0.1s all;
-  padding-right: 40px;
+  padding-left: 20px;
+  overflow: hidden;
 }
 #lyrics h2{
+  transform: skew(-0.5deg, -0.9deg);
   /* animation: glitched2 3s infinite; */
   opacity: 0.25;
   text-align: left;
   transition: all ease-in-out;
-  transform: translateX(1%) translateZ(-18px);
+  transform: translateX(10%) translateZ(-18px);
   /* font-size: 40px; */
 }
 
 #lyrics .current{
-  animation: glitched2 6s infinite;
+  /* animation: glitched2 6s infinite; */
   z-index: 9999;
   opacity: 1;
   font-size: 250%;
@@ -184,6 +186,7 @@ body .logo p {
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   box-shadow: 0px 3px 40px 4px rgba(110, 110, 110, 0.28);
+  border-radius: 27px;
 }
 #lyrics .current + h2{
   opacity: 0.5;
@@ -200,6 +203,9 @@ body .logo p {
   margin: 0;
   width: 50%;
   margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .left:hover #player {
   background: rgba(255, 255, 255, .1);
@@ -210,11 +216,11 @@ body .logo p {
 }
 /*PROGRESS BAR*/
 #bar{
-
   position:relative;
+  display: flex;
   text-align: center;
-  width:100%;
-  padding-top: 25px;
+  width:70%;
+  padding-top: 45px;
 }
 #currentTime,#totalTime{
   transform:translateY(-50%);
@@ -449,6 +455,10 @@ body .logo p {
   and (max-device-width: 1024px)
   and (orientation: portrait)
   and (-webkit-min-device-pixel-ratio: 1) {
+   /* body {
+      height: 100vh;
+    } */
+
     #music-player{
       width:100%;
       height:100vh;
@@ -464,11 +474,40 @@ body .logo p {
       /* background-image: url("https://hiphopdx-production.s3.amazonaws.com/2018/05/180516-nev-reckless-album-cover.jpg"); */
     }
 
+    body .logo {
+      position: relative;
+      background: red;
+      border-radius: 50%;
+      position: fixed;
+      z-index: 9999;
+      right: 48%;
+      top: 77%;
+      /* padding: 20px; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      transition: all .35s ease;
+      /* animation: glitched2 6s infinite; */
+    }
+
+    body .logo h1{
+      font-size: 24px;
+    }
+    body .logo::before {
+      border: 3px solid #fff !important;
+    }
+    body .logo::hover.logo::before {
+      border: 3px solid red !important;
+    }
+
     #lyrics {
-      border: 1px solid red;
+      border: 2px solid red;
       border-radius: 10px;
       width: 90%;
-      height: 70vh;
+      height: 75%;
       color: var(--lyrics-color);
       text-align: center;
       overflow-Y: scroll;
@@ -477,6 +516,79 @@ body .logo p {
       background: rgba(255, 255, 255, .1);
       backdrop-filter: blur(46px);
       margin-top: 50px;
+  }
+
+  #music-player .left img {
+    position: absolute;
+    top: -120px;
+    opacity: .9;
+    border-radius: 50% !important;
+    border: 1px solid red;
+    right :-25px;
+    /* margin-left: 125px; */
+    transition: all .35s ease-in-out;
+    transform: scale(.4);
+  }
+
+  #music-player .left:hover img {
+    opacity: .7;
+    transform:  scale(.8) translateY(65%) translateX(-55%);
+    /* -webkit-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+    /* -moz-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+    box-shadow: 0px 3px 40px 4px rgba(255, 0, 0, 0.38);
+  }
+
+  #player{
+    bottom: 0;
+    padding: 10px 0;
+    width: 900px !important;
+    z-index: 50;
+    right: 0;
+    top: 20%;
+    border: 2px solid red;
+    border-radius: 10px;
+    transition: all .35s ease-in-out;
+    backdrop-filter: blur(46px);
+    margin: 0;
+    margin-top: 70px;
+  }
+
+  .left {
+    height: 25%;
+  }
+
+  .left:hover #player {
+    background: rgba(255, 255, 255, .1);
+    transform:  translateY(-60px) scale(.85) translateX(20%);
+  }
+  #bar{
+    position:relative;
+    display: flex;
+    text-align: center;
+    width:90%;
+    padding-top: 45px;
+  }
+  #menu{
+    position:relative;
+    text-align: center;
+    width:100%;
+    padding-top: 25px;
+  }
+  #menu > button{
+    padding: 30px 30px;
+    border-radius: 50%;
+    /* border: 3px solid white; */
+    margin: 0 5px;
+    background: inherit;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.75;
+    cursor: pointer;
+  }
+
+  #menu > button#play{
+    border: 3px solid #fff;
   }
 }
 
@@ -512,7 +624,7 @@ body .logo p {
       position: fixed;
       z-index: 9999;
       right: 48%;
-      top: 87%;
+      top: 74%;
       /* padding: 20px; */
       display: flex;
       flex-direction: column;
@@ -534,16 +646,11 @@ body .logo p {
       border: 3px solid red !important;
     }
 
-    .left {
-      width: 100%;
-      height: 50%;
-    }
-
     #lyrics {
       border: 2px solid red;
       border-radius: 10px;
       width: 90%;
-      height: 70vh;
+      height: 75%;
       color: var(--lyrics-color);
       text-align: center;
       overflow-Y: scroll;
@@ -556,22 +663,27 @@ body .logo p {
 
   #music-player .left img {
     position: absolute;
-    bottom: 20%;
-    border-radius: 10px;
+    top: -120px;
+    opacity: .9;
+    border-radius: 50% !important;
     border: 1px solid red;
-    margin-left: 125px;
+    right :-25px;
+    /* margin-left: 125px; */
     transition: all .35s ease-in-out;
-    transform: scale(.7);
+    transform: scale(.4);
+  }
+
+  #music-player .left:hover img {
+    opacity: .7;
+    transform:  scale(.8) translateY(65%) translateX(-55%);
+    /* -webkit-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+    /* -moz-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+    box-shadow: 0px 3px 40px 4px rgba(255, 0, 0, 0.38);
   }
 
   #player{
-    /* position: absolute; */
-    display: block;
     bottom: 0;
-    height: 18vh;
-    /* margin-bottom: 90px; */
-    display: block;
-    /* width: 800px !important; */
+    padding: 10px 0;
     width: 900px !important;
     z-index: 50;
     right: 0;
@@ -583,14 +695,21 @@ body .logo p {
     margin: 0;
     margin-top: 70px;
   }
+
+  .left {
+    height: 25%;
+  }
+
   .left:hover #player {
     background: rgba(255, 255, 255, .1);
     transform:  translateY(-60px) scale(.85) translateX(20%);
   }
   #bar{
+    position:relative;
     display: flex;
-    flex-wrap: nowrap;
-    width:100%;
+    text-align: center;
+    width:90%;
+    padding-top: 45px;
   }
   #menu{
     position:relative;
