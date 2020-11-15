@@ -1,0 +1,973 @@
+:root{
+  --bg-color: background-color: #7f5a83;
+              background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+  --menu-color: #00000045;
+  --lyrics-color: white;
+  --light-mode-bg: #7f7f7f;
+  --font-family: "Montserrat",sans-serif;
+}
+*, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,body{
+  overflow: scroll;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  overflow: hidden;
+  background: black;
+}
+
+#music-player{
+  width:100%;
+  height:100vh;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border: 1px solid black;
+  backdrop-filter: blur(46px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url("https://hiphopdx-production.s3.amazonaws.com/2018/05/180516-nev-reckless-album-cover.jpg"); */
+}
+body .logo i {
+  color: #fff;
+}
+
+body .logo {
+  position: relative;
+  border: 1px solid red;
+  background: red;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 9999;
+  right: 72%;
+  top: 70%;
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  transition: all .35s ease;
+  /* animation: glitched2 6s infinite; */
+}
+
+body .logo::before {
+  content: "";
+  border: 1px solid red;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 9999;
+  width: 100px;
+  height: 100px;
+  transition: all .35s ease;
+}
+/*
+body .logo:hover ::before {
+  opacity: 0;
+  background: green;
+} */
+
+body .logo:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+body .logo:hover.logo::before {
+  transform: scale(1.2);
+  cursor: pointer;
+  border: 1px solid #fff;
+  animation: glitched2 6s infinite alternate;
+  /* background: red;
+  z-index: -1; */
+
+}
+
+body .logo h1 {
+  font-size: 15px;
+  color: #fff;
+  line-height: 20px;
+}
+body .logo p {
+  color: #fff;
+  font-size: 9px;
+}
+
+.left {
+  width: 50%;
+}
+
+#music-player .left img {
+  border-radius: 143px;
+  border: 1px solid red;
+  /* right: -50%; */
+  /* top: 30%; */
+  transition: all .35s ease-in-out;
+}
+#music-player .left:hover img {
+  transform:  scale(.8) translateY(90px) translateX(-30%);
+  /* -webkit-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+  /* -moz-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+  box-shadow: 0px 3px 40px 4px rgba(255, 0, 0, 0.38);
+}
+/* #album-art{ position:fixed; z-index:-1; left: 50%; transform: translateX(-50%);opacity: 0.15;width: auto; height: 100%;} */
+#top-bar{
+  border: 1px solid #e2e2e2;
+  border-radius: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 50px;
+  color: white;
+  width: 30%;
+  /* width: 54%; */
+  /* width: 60%; */
+  /* padding: 0 0 0 5%; */
+  z-index: 50;
+}
+/* #top-bar > *{ display:inline-block; } */
+/* #top-bar button{ margin:0;background: inherit; border: none; color: white; font-size: 100%;vertical-align:middle;transform:translateY(-40%);padding: 5px 10px;} */
+/* #about-song{ width: 60%; margin: 0 5%; line-height: 1vh; font-size:70%;} */
+/* .artist-name{ color: #ffffff79;} */
+@media only screen and (max-width: 340px){
+  #top-bar > button{ font-size: 15px; }
+  #top-bar > #about-song *{ font-size:120%;line-height:0; }
+  #menu > button{ font-size: 5vw !important; padding: 4px 6px !important;  }
+  #progress-bar{
+    width: 50% !important;
+  }
+}
+#lyrics{
+  border: 1px solid red;
+  border-radius: 143px !important;
+  width: 50%;
+  height: 60vh;
+  color: var(--lyrics-color);
+  text-align: center;
+  overflow-Y: scroll;
+  overflow-X: hidden;
+  font-size: 2vh;
+  background: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(46px);
+  margin-top: 50px;
+}
+#lyrics-content{
+  /* padding: 40px; */
+  width: 100%;
+  margin:0;
+  /* padding: 20vh 0; */
+  transition: ease 0.1s all;
+  padding-right: 40px;
+}
+#lyrics h2{
+  /* animation: glitched2 3s infinite; */
+  opacity: 0.25;
+  text-align: left;
+  transition: all ease-in-out;
+  transform: translateX(1%) translateZ(-18px);
+  /* font-size: 40px; */
+}
+
+
+#lyrics .current{
+  animation: glitched2 6s infinite;
+  z-index: 9999;
+  opacity: 1;
+  font-size: 250%;
+  transform: translateX(0) translateZ(8px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 3px 40px 4px rgba(110, 110, 110, 0.28);
+}
+#lyrics .current + h2{
+  opacity: 0.5;
+}
+#player{
+  bottom: 0;
+  z-index: 50;
+  right: 0;
+  top: 80%;
+  border: 1px solid red;
+  border-radius: 143px !important;
+  transition: all .35s ease-in-out;
+  backdrop-filter: blur(46px);
+  margin: 0;
+  width: 50%;
+  margin-left: 50px;
+}
+.left:hover #player {
+  background: rgba(255, 255, 255, .1);
+  transform:  translateY(-60px) scale(.85) translateX(55%);
+  /* -webkit-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+  /* -moz-box-shadow: 0px 18px 41px 4px rgba(255, 0, 0, 0.75); */
+  /* box-shadow: 0px 3px 40px 4px rgba(255, 0, 0, 0.38); */
+}
+
+#bar{
+  position:relative;
+  text-align: center;
+  width:100%;
+  padding-top: 25px;
+}
+#currentTime,#totalTime{transform:translateY(-50%);padding: 0 2%;font-size: 3vh}
+@media only screen and (min-height: 500px){#currentTime,#totalTime{font-size: 2.25vh !important;}}
+#currentTime,#progress-bar,#totalTime{color: white;display: inline-block;}
+#progress-bar{
+  position: relative;
+  text-align: center;
+  height: 0.25em;
+  width: 70%;
+  border: 1px solid #222;
+  background: #333;
+  border-radius: 20px;
+  margin:0;padding:0;
+  cursor: pointer;
+  transform: translateY(-160%);
+}
+#progress{
+  height:100%;
+  width:0%;
+  background: red;
+  border-radius: 20px;
+  text-align: right;
+  transition: ease all;
+}
+#progress > i{
+  position: absolute;
+  transform: translate(-50%,-35%);
+}
+#menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+  text-align: center;
+  width:100%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+#menu > button{
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 5px;
+  background: inherit;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  opacity: 0.75;
+  cursor: pointer;
+}
+#menu > button > i{
+  padding: 5px 3px 5px 5px;
+}
+#menu > button#play{
+  opacity: 1;
+  border: .8px solid #fff;
+}
+
+#sing-panel {
+  /* padding: 10px 14px; */
+  /* border-radius: 50%; */
+  border: 1px solid #fff;
+  width: 100%;
+  border: none;
+  margin: 0 5px;
+  background: inherit;
+  /* color: white; */
+  font-size: 20px;
+  text-align: center;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+#sing-panel:hover {
+  background: transparent;
+}
+
+#sing-panel > button#sing{
+  /* display: flex; */
+  flex-direction: column;
+  opacity: 1;
+  border: .8px solid white;
+}
+#menu > p {
+  color: #fff;
+  font-size: 10px;
+}
+#menu > button:focus{
+  outline: none;
+}
+#playlist{
+  position:fixed;
+  top:8vh;
+  left:0;
+  height:91vh;
+  width:100vw;
+  z-index: 4;
+  color: var(--lyrics-color);
+  border: 1px solid red;
+  background: rgba(0,0,0,0.6);
+  transition: cubic-bezier(.04,.12,.81,.21) 1s all;
+  transform:translateX(100%);
+}
+#show-box{
+  position: absolute;
+  top: 70%;
+  left:50%;
+  height: 30vh;
+  width:70%;
+  padding: 4vh;
+  transform: translate(-50%,-70%);
+  overflow: auto;
+}
+#show-list{
+  position: relative;
+  transition: ease-in-out 0.5s all;
+  height: 100%;
+}
+#show-list .float-song-card{
+  position: relative;
+  display:inline-block;
+  height: 130px;
+  width: 110px;
+  padding: 20px 10px;
+  background: #00000089;
+  text-align: center;
+  font-size: 70%;
+  border-radius:8px;
+  margin: 4px 10px;
+  overflow:hidden;
+  cursor: pointer;
+}
+.float-song-card > .album-art{
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+  height:100%;
+  width: auto;
+  opacity:0.75;
+  transition: ease-in-out 0.5s all;
+}
+.float-song-card:hover > .album-art{
+  transform: translateX(-50%) scale(1.2,1.2);
+  opacity:1;
+}
+.float-song-card > h2,
+.float-song-card > h4{position:relative;z-index:49;margin:2px 0;}
+#playlist > #label{
+  width:100%;
+  text-align: center;
+  font-size:100%;
+  z-index: 9999;
+}
+#playlist > #label > h1{
+  line-height:0;
+  margin: 6vh 0 2.5vh;
+}
+#search{
+  background: transparent;
+  color: white;
+  border:1px solid #ffffff99;
+  padding: 8px;
+  margin: 2.5vh 0;
+  border-radius: 50%;
+  font-family: FontAwesome,"Montserrat",sans-serif;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s all;
+  width: 12px;
+  background: white;
+}
+#search:focus{outline:none;border-radius:8px;border:1px solid #ffffff;width:25vw;padding: 1vh 1.5vw;background: inherit;}
+/* @media only screen and (max-height: 500px){
+  #show-list .float-song-card{font-size:40% !important;height:60px;width:50px;}
+  #playlist > #label{font-size:70%;}
+  #search{font-size:10px;padding:4px;width:10px;}
+  #search:focus{width:40vw;}
+  #playlist > #label > h1{margin:8vh 0 4vh !important;}
+} */
+
+#lyrics::-webkit-scrollbar,#show-box::-webkit-scrollbar{
+  width:5px;
+}
+#lyrics::-webkit-scrollbar-track,#show-box::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+#lyrics::-webkit-scrollbar-thumb,#show-box::-webkit-scrollbar-thumb{
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 15px;
+}
+.floating-icon{
+  position: absolute;
+  bottom: 5%;
+  z-index: 1000;
+  font-size: 4vh;
+  border: 1.5px solid white;
+  border-radius: 50%;
+  padding: 1vh 2vh;
+  background: #222;
+}
+.floating-icon:nth-child(1){
+  right: 3vh;
+}
+.floating-icon:nth-child(2){
+  right: 12vh;
+}
+#back {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#back:focus {
+  outline: none;
+  border: 1px solid #fff;
+}
+/* #back i {
+  width: 100%;
+  height: 100%;
+} */
+
+
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: portrait)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    #music-player{
+      width:100%;
+      height:100vh;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      border: 1px solid black;
+      backdrop-filter: blur(46px);
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* background-image: url("https://hiphopdx-production.s3.amazonaws.com/2018/05/180516-nev-reckless-album-cover.jpg"); */
+    }
+
+    #lyrics {
+      border: 1px solid red;
+      border-radius: 10px;
+      width: 90%;
+      height: 70vh;
+      color: var(--lyrics-color);
+      text-align: center;
+      overflow-Y: scroll;
+      overflow-X: hidden;
+      font-size: 2vh;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(46px);
+      margin-top: 50px;
+  }
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    /* body {
+      height: 100vh;
+    } */
+
+    #music-player{
+      width:100%;
+      height:100vh;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      border: 1px solid black;
+      backdrop-filter: blur(46px);
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* background-image: url("https://hiphopdx-production.s3.amazonaws.com/2018/05/180516-nev-reckless-album-cover.jpg"); */
+    }
+
+    body .logo {
+      position: relative;
+      background: red;
+      border-radius: 50%;
+      position: fixed;
+      z-index: 9999;
+      right: 48%;
+      top: 87%;
+      /* padding: 20px; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      transition: all .35s ease;
+      /* animation: glitched2 6s infinite; */
+    }
+
+    body .logo h1{
+      font-size: 24px;
+    }
+    body .logo::before {
+      border: 3px solid #fff !important;
+    }
+    body .logo::hover.logo::before {
+      border: 3px solid red !important;
+    }
+
+    .left {
+      width: 100%;
+      height: 50%;
+    }
+
+    #lyrics {
+      border: 2px solid red;
+      border-radius: 10px;
+      width: 90%;
+      height: 70vh;
+      color: var(--lyrics-color);
+      text-align: center;
+      overflow-Y: scroll;
+      overflow-X: hidden;
+      font-size: 2vh;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(46px);
+      margin-top: 50px;
+  }
+
+  #music-player .left img {
+    position: absolute;
+    bottom: 20%;
+    border-radius: 10px;
+    border: 1px solid red;
+    margin-left: 125px;
+    transition: all .35s ease-in-out;
+    transform: scale(.7);
+  }
+
+  #player{
+    /* position: absolute; */
+    display: block;
+    bottom: 0;
+    height: 18vh;
+    /* margin-bottom: 90px; */
+    display: block;
+    /* width: 800px !important; */
+    width: 900px !important;
+    z-index: 50;
+    right: 0;
+    top: 20%;
+    border: 2px solid red;
+    border-radius: 10px;
+    transition: all .35s ease-in-out;
+    backdrop-filter: blur(46px);
+    margin: 0;
+    margin-top: 70px;
+  }
+  .left:hover #player {
+    background: rgba(255, 255, 255, .1);
+    transform:  translateY(-60px) scale(.85) translateX(20%);
+  }
+  #bar{
+    display: flex;
+    flex-wrap: nowrap;
+    width:100%;
+  }
+  #menu{
+    position:relative;
+    text-align: center;
+    width:100%;
+    padding-top: 25px;
+  }
+  #menu > button{
+    padding: 30px 30px;
+    border-radius: 50%;
+    /* border: 3px solid white; */
+    margin: 0 5px;
+    background: inherit;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.75;
+    cursor: pointer;
+  }
+
+  #menu > button#play{
+    border: 3px solid #fff;
+  }
+}
+
+
+@keyframes glitchbackground {
+  0% {
+    transform: none;
+    opacity: 0.75;
+  }
+  5% {
+    transform: none;
+    opacity: 0.25;
+  }
+  10% {
+    transform: none;
+    opacity: 0.75;
+  }
+  15% {
+    transform: none;
+    opacity: 0.5;
+  }
+  20% {
+    transform: none;
+    opacity: 0.75;
+  }
+  25% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: none;
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  40% {
+    transform: none;
+    opacity: 0.5;
+  }
+  45% {
+    transform: none;
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 0.75;
+  }
+  55% {
+    transform: none;
+    opacity: 0.75;
+  }
+  60% {
+    transform: none;
+    opacity: 1;
+  }
+  65% {
+    transform: none;
+    opacity: 0.75;
+  }
+  70% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: none;
+    opacity: 1;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  85% {
+    transform: none;
+    opacity: 1;
+  }
+  90% {
+    transform: none;
+    opacity: 0.75;
+  }
+  95% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes glitch1 {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  7% {
+    transform: skew(-0.5deg, -0.9deg);
+    opacity: 0.75;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: skew(0.8deg, -0.5deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: skew(-3deg, 0.2deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: skew(0.4deg, 1deg);
+    opacity: 0.75;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes glitched2 {
+  0% {
+    transform: skew(-0.9deg, -6deg);
+    opacity: 1;
+  }
+  7% {
+    transform: none;
+    opacity: 0.75;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: none;
+    opacity: 1;
+  }
+  35% {
+    transform: skew(-9.7deg, -0.6deg);
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 0.75;
+  }
+  55% {
+    transform: translate(0px, 2px);
+    opacity: 1;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 0.75;
+  }
+  75% {
+    transform: none;
+    opacity: 1;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: skew(-6deg, -0.4deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes glitched3 {
+  0% {
+    transform: none;
+    opacity: 0.75;
+  }
+  7% {
+    transform: skew(-0.5deg, -0.8deg);
+    opacity: 1;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: skew(-0.7deg, -0.1deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: translate(0px, -2px);
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 0.75;
+  }
+  75% {
+    transform: skew(-0.6deg, -0.3deg);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 0.75;
+  }
+}
+@keyframes glitch2 {
+  0% {
+    transform: none;
+    opacity: 0.25;
+  }
+  7% {
+    transform: translate(-2px, -3px);
+    opacity: 0.5;
+  }
+  10% {
+    transform: none;
+    opacity: 0.25;
+  }
+  27% {
+    transform: none;
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(-5px, -2px);
+    opacity: 0.5;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  52% {
+    transform: none;
+    opacity: 0.25;
+  }
+  55% {
+    transform: translate(-5px, -1px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: none;
+    opacity: 0.25;
+  }
+  72% {
+    transform: none;
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(-2px, -6px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 0.25;
+  }
+  100% {
+    transform: none;
+    opacity: 0.25;
+  }
+}
+
+@keyframes glitch3 {
+  0% {
+    transform: none;
+    opacity: 0.25;
+  }
+  7% {
+    transform: translate(2px, 3px);
+    opacity: 0.5;
+  }
+  10% {
+    transform: none;
+    opacity: 0.25;
+  }
+  27% {
+    transform: none;
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(5px, 2px);
+    opacity: 0.5;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  52% {
+    transform: none;
+    opacity: 0.25;
+  }
+  55% {
+    transform: translate(5px, 1px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: none;
+    opacity: 0.25;
+  }
+  72% {
+    transform: none;
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(2px, 6px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 0.25;
+  }
+  100% {
+    transform: none;
+    opacity: 0.25;
+  }
+}
