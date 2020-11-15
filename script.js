@@ -87,8 +87,6 @@ $.getJSON('https://larrynxumalo.github.io/kasioke/playlist.json',function(data){
     //     console.log('muted');
     //      muter();
     // }
-
-
     function playSong(){
         if(play==0){
             play = 1;
