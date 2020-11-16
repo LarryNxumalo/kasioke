@@ -80,12 +80,14 @@
     var closeFS = document.getElementById("closeFS");
 
     goFS.addEventListener("click", function() {
+        alert("Going full screen")
         document.body.requestFullscreen();
     }, false);
 
     closeFS.addEventListener("click", function() {
+        alert('Out of full screen')
         document.body.exitFullscreen();
-    }, false);
+    }, true);
 
   </script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
