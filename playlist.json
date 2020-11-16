@@ -15,6 +15,27 @@
 "audio": "https://larrynxumalo.github.io/kasioke/music/CostaTitch-Thembi.mp3"
 },
 {
+"albumart": "https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg",
+"author": "Dr MaVibes ft Blaq-diamond, Snymaan, Manny-yack, Brvdley",
+"song": "Umlilo",
+"json": "https://larrynxumalo.github.io/kasioke/lyrics/BlackDiamond-Umlilo.json",
+"audio": "https://larrynxumalo.github.io/kasioke/music/BlackDiamond-Umlilo.mp3"
+},
+{
+"albumart": "https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg",
+"author": "Elaine",
+"song": "You're the one",
+"json": "https://larrynxumalo.github.io/kasioke/lyrics/Elaine-YouReTheOne.json",
+"audio": "https://larrynxumalo.github.io/kasioke/music/Elaine-YouReTheOne.mp3"
+},
+{
+"albumart": "https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg",
+"author": "Roddy Ricch",
+"song": "The Box",
+"json": "https://larrynxumalo.github.io/kasioke/lyrics/RoddyRicch-TheBox.json",
+"audio": "https://larrynxumalo.github.io/kasioke/music/RoddyRicch-TheBox.mp3"
+},
+{
 "albumart": "https://res-4.cloudinary.com/synchtank-com/image/upload/s--ZHu6g1XW--/c_fill,g_auto,h_720,w_720/q_auto:eco/object-70210148.jpg",
 "author": "Novo Amor",
 "song": "State Lines",
