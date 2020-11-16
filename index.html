@@ -2,7 +2,8 @@
 <html lang="en" >
   <head>
     <meta charset="UTF-8">
-    <title>Kasioke</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kasioke &copy;</title>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
   </head>
@@ -32,7 +33,7 @@
           <h4 >Daughter</h4>
         </div>
       </div> -->
-      <img src="https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg"/>
+      <img id="closeFS" src="https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg"/>
 
       <audio id="audioFile" mute="true" preload="true">
       </audio>
@@ -74,13 +75,14 @@
       </div>
   <!-- partial -->
   <script>
+    //full screen code
     var goFS = document.getElementById("goFS");
+    var closeFS = document.getElementById("closeFS");
+
     goFS.addEventListener("click", function() {
         document.body.requestFullscreen();
     }, false);
-  </script>
-  <script>
-    var closeFS = document.getElementById("closeFS");
+
     closeFS.addEventListener("click", function() {
         document.body.exitFullscreen();
     }, false);
@@ -88,7 +90,5 @@
   </script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script  src="./script.js"></script>
-
-
   </body>
 </html>
