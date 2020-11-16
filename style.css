@@ -163,7 +163,7 @@ body .logo p {
   width: 100%;
   margin:0;
   /* padding: 20vh 0; */
-  transition: ease 0.1s all;
+  /* transition: ease 0.1s all; */
   padding-left: 20px;
   overflow: hidden;
 }
@@ -172,7 +172,7 @@ body .logo p {
   /* animation: glitched2 3s infinite; */
   opacity: 0.25;
   text-align: left;
-  transition: all ease-in-out;
+  /* transition: all ease-in-out; */
   transform: translateX(10%) translateZ(-18px);
   /* font-size: 40px; */
 }
