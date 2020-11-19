@@ -11,9 +11,13 @@ $.getJSON('https://larrynxumalo.github.io/kasioke/playlist.json',function(data){
     var playlist = data;
     var index = 0;
     var indexing = playlist.songs[index];
+    console.log(indexing)
     var time = 0;
+    console.log(time)
     var totalTime = 0;
+    console.log(totalTime)
     var timeList = [];
+    console.log(timeList)
     var play = 0;
     var counter = 0;
     var songRepeat = 0;
@@ -29,15 +33,24 @@ $.getJSON('https://larrynxumalo.github.io/kasioke/playlist.json',function(data){
         var a = $(".current").height();
         var c = $("#lyrics").height();
         var d = $(".current").offset().top - $(".current").parent().offset().top;
-        var e = d + (a/2) - (c*1/4);
+        var e = d + (a/4) - (c*1/16);
         $("#lyrics").animate(
-            {scrollTop: e + "px"}, {easing: "swing", duration: 500}
+            {
+                scrollTop: e + "px"
+            },
+            {
+                easing: "swing",
+                duration: 250
+            }
         );
     }
     function next(){
         console.log('next song')
         var current = $('#lyrics .current');
-        if(current.length == 0){ $('#lyrics-content h2:nth-child(1)').addClass("current"); return; }
+        if(current.length == 0){
+            $('#lyrics-content h2:nth-child(1)').addClass("current");
+            return;
+        }
         current.removeClass('current');
         current.next().addClass('current');
     }
@@ -87,15 +100,21 @@ $.getJSON('https://larrynxumalo.github.io/kasioke/playlist.json',function(data){
     //     console.log('muted');
     //      muter();
     // }
+    //Play song function adding and removing class once song starts
     function playSong(){
-        if(play==0){
+        if(play == 0){
             play = 1;
             audio.play();
             $('#menu button#play i').removeClass("fa-play");
             $('#menu button#play i').addClass("fa-pause");
         }
-        else{play = 0;audio.pause();$('#menu button#play i').removeClass("fa-pause");$('#menu button#play i').addClass("fa-play");}
+        else{
+            play = 0;
+            audio.pause();
+            $('#menu button#play i').removeClass("fa-pause");
+            $('#menu button#play i').addClass("fa-play");}
     }
+
     function processing(data){
         if(data.author == ""){ data.author = "Unknown"; }
         setSongName(data.song);

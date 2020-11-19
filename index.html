@@ -7,80 +7,78 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
   </head>
-  <body>
+  <body .>
   <!-- partial:index.partial.html -->
-  <!-- <div class="floating-icon"><a href="https://jewel998.github.io/playlist" style="color:white"><i class="fa fa-github"></i></a></div>
-  <div class="floating-icon"><a href="https://codepen.io/jewel998" style="color:white"><i class="fa fa-codepen"></i></a></div> -->
-  <div class="logo" id="goFS">
-    <h1>Kasiokè</h1>
-    <i class="fa fa-microphone"></i>
-  </div>
-  <div id="music-player">
-    <div id="lyrics">
-      <!-- <h2 class="song-name"></h2><h4 class="artist-name"></h4> -->
-      <h2>Riky Rick</h2>
-      <h4>Ungazincishi</h4>
-      <div id="lyrics-content">
-      </div>
-    </div>
-    <div class="left">
       <!-- <div id="top-bar">
-        <button id="back">
-          <i class="fa fa-music"></i>
-        </button>
-        <div id="about-song">
-          <h2 >Youth</h2>
-          <h4 >Daughter</h4>
-        </div>
-      </div> -->
-      <img id="closeFS" src="https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg"/>
+            <button id="back">
+              <i class="fa fa-music"></i>
+            </button>
+            <div id="about-song">
+              <h2 >Youth</h2>
+              <h4 >Daughter</h4>
+            </div>
+          </div> -->
 
-      <audio id="audioFile" mute="true" preload="true">
-      </audio>
-      <div id="player">
-        <div id="bar">
-          <div class="current-time" id="currentTime"></div>
-          <div id="progress-bar">
-            <div id="progress"><i id="progressButton" class="fa fa-circle"></i></div>
-          </div>
-          <div id="totalTime"></div>
-        </div>
-        <div id="menu">
-          <button id="repeat" style="color:grey"><i class="fa fa-repeat"></i></button>
-          <button id="prev"><i class="fa fa-step-backward"></i></button>
-          <button id="play"><i class="fa fa-play"></i></button>
-          <button id="next"><i class="fa fa-step-forward"></i></button>
-          <button id="shuffle" style="color:grey"><i class="fa fa-random"></i></button>
-        </div>
-        <!-- <div id="menu">
-          <button  id="closeFS">
-            <i class="fa fa-microphone"></i>
-          </button>
-        </div> -->
-        <!-- <p>Sing, Record and compete with friends</p> -->
-      </div>
-<!--
-      <div id="playlist">
-        <div id="label">
-          <h1>Playlist</h1>
-          <input id="search" type="text" placeholder="&#xF002; Search from all songs"></input>
-        </div>
-        <div id="show-box">
-          <div id="show-list">
+    <div class="logo" id="goFS">
+      <h1>Kasioke</h1>
+      <i class="fa fa-microphone"></i>
+    </div><!--end.logo-->
+    <div id="music-player">
+        <div class="right">
+          <div id="lyrics">
+            <h2 class="song-name"></h2><h4 class="artist-name"></h4>
+            <h2>Riky Rick</h2>
+            <h4>Ungazincishi</h4>
+            <div id="lyrics-content"></div>
+          </div><!--end.lyrics-->
+          <div clas="lyric-check">
+            <p class="phrase">Phrase...</p>
+            <p class="result">Right or wrong?</p>
+            <p class="output">What you said</p>
           </div>
         </div>
-      </div> -->
-    </div>
+        <div class="left">
+          <img src="https://t2.genius.com/unsafe/600x0/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg"/>
+          <audio id="audioFile" preload="true"></audio>
+          <div id="player">
+            <div id="bar">
+              <div class="current-time" id="currentTime"></div>
+              <div id="progress-bar">
+                <div id="progress"><i id="progressButton" class="fa fa-circle"></i></div>
+              </div>
+              <div id="totalTime"></div>
+            </div>
+            <div id="menu">
+              <button id="repeat" style="color:grey"><i class="fa fa-repeat"></i></button>
+              <button id="prev"><i class="fa fa-step-backward"></i></button>
+              <button id="play"><i class="fa fa-play"></i></button>
+              <button id="next"><i class="fa fa-step-forward"></i></button>
+              <button id="shuffle" style="color:grey"><i class="fa fa-random"></i></button>
+            </div>
+          </div><!--end.player-->
 
-      </div>
-  <!-- partial -->
+          <!-- <div id="playlist">
+            <div id="label">
+              <h1>Playlist</h1>
+              <input id="search" type="text" placeholder="&#xF002; Search from all songs"></input>
+            </div>
+            <div id="show-box">
+              <div id="show-list">
+              </div>
+            </div>
+          </div> -->
+        </div><!--end.left-->
+    </div><!--end#music-player-->
+
+  <!-- scripts partial -->
+  <script  src="./speech.js"></script>
   <script>
     //full screen code
     var goFS = document.getElementById("goFS");
     var closeFS = document.getElementById("closeFS");
 
     goFS.addEventListener("click", function() {
-        alert("Going full screen")
+        // alert("Going full screen")
         document.body.requestFullscreen();
     }, false);
 
@@ -90,7 +88,7 @@
     }, true);
 
   </script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-    <script  src="./script.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script  src="./script.js"></script>
   </body>
 </html>
