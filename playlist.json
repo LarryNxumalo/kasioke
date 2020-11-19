@@ -1,6 +1,13 @@
 {
 "songs": [
 {
+"albumart": "https://t2.genius.com/unsafe/440x0/https%3A%2F%2Fimages.genius.com%2Fefbccd33061c1fce5583ba45c8735d80.400x400x1.jpg",
+"author": "Phantom Steeze ft Costa Titch",
+"song": "Stimela",
+"json": "https://larrynxumalo.github.io/kasioke/lyrics/PhantomSteeze-Stimela.json",
+"audio": "https://larrynxumalo.github.io/kasioke/music/PhantomSteeze-Stimela.mp3"
+},
+{
 "albumart": "https://t2.genius.com/unsafe/621x621/https%3A%2F%2Fimages.genius.com%2F4c5a4b27fb22df5bf71e3d3873d4c64e.1000x1000x1.jpg",
 "author": "Costa Titch ft Boity",
 "song": "Thembi",
